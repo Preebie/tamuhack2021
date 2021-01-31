@@ -1,7 +1,36 @@
 {% extends "base.html" %}
 {% block title %}User Page{% endblock %}
 {% block content %}
-<a href="/my-link/">See names and emails</a>
-<form action="http://127.0.0.1:5000/ZacharyChatbox" method="get">
+
+<!--<a href="/my-link/">See names and emails</a> -->
+<div id = "p1" style = "font-size: 169px; text-align: center "></div>
+<form action="http://127.0.0.1:5000/ZacharyChatbox" style = "text-align: center" method="get">
     <p><input type="submit" name="chatbox" value="Go to Zachary Chatbox!"></p>
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-database.js"></script>
+<script type="text/javascript">
+    document.getElementById("p1").innerHTML = "New text!";
+    var firebaseConfig = {
+    apiKey: "AIzaSyA1jy7HboMhnT5a8V1-a_oPWxGjqBOtnFc",
+    authDomain: "fir-1117.firebaseapp.com",
+    databaseURL: "https://firebase1117-default-rtdb.firebaseio.com",
+    projectId: "firebase1117",
+    storageBucket: "firebase1117.appspot.com",
+    messagingSenderId: "882359453315",
+    appId: "1:882359453315:web:6bd25c9048ac5bab33bdb6"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  const database = firebase.database()
+
+  const tref = database.ref('zach');
+  console.log("here")
+tref.on("value", function (snapshot) {
+    console.log("here at rtdb")
+    //console.log("user-connected"+snapshot.val());
+    document.getElementById("p1").innerHTML = snapshot.val();
+     
+  });
+</script>
 {% endblock %}
