@@ -9,7 +9,7 @@ const home = () => {
     return (
         <div> 
             <h1>Home</h1>
-            <p>HOME PAGE BIAATTCHHHH</p>
+            <p>HOME PAGE</p>
             <Link to = {{
                 pathname : "/cameras",
                 data : [{name: "MSC", direction: "NA"}]
